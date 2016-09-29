@@ -42,7 +42,7 @@ module.exports = function(grunt) {
           },
           target: {
             files: {
-              'assets/css/build/build.min.css': ['assets/css/normalize.css', 'lib/animate.css/animate.min.css', 'lib/Morphext/dist/morphext.min.css', 'assets/css/app.css']
+              'assets/css/build/build.min.css': ['assets/css/normalize.css', 'lib/animate.css/source/flippers/flipInX.css', 'lib/Morphext/dist/morphext.min.css', 'assets/css/app.css']
             }
           }
         },
