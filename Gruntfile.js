@@ -31,9 +31,20 @@ module.exports = function(grunt) {
                     ],
                 },
                 files: {
-                    'assets/css/app.min.css': 'assets/css/app.styl'
+                    'assets/css/app.css': 'assets/css/app.styl'
                 }
             }
+        },
+        cssmin: {
+          options: {
+            shorthandCompacting: false,
+            roundingPrecision: -1
+          },
+          target: {
+            files: {
+              'assets/css/build/build.min.css': ['assets/css/normalize.css', 'lib/animate.css/animate.min.css', 'lib/Morphext/dist/morphext.min.css', 'assets/css/app.css']
+            }
+          }
         },
         watch: {
             js: {
@@ -64,10 +75,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-stylus');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-php');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.registerTask('javascript', ['concat', 'uglify']);
-    grunt.registerTask('stylesheets', ['stylus']);
+    grunt.registerTask('stylesheets', ['stylus', 'cssmin']);
     grunt.registerTask('test', ['php', 'mocha']);
     grunt.registerTask('default', ['javascript', 'stylesheets', 'watch', 'php']);
 };

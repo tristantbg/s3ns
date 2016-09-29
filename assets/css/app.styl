@@ -1,8 +1,6 @@
 @import 'nib'
 @import '../../node_modules/jeet/stylus/jeet/*'
 @import '_mixins.styl'
-@import 'normalize.css'
-@import '../oembed/oembed.css'
 
 // Media queries
 $desktop = 1600px
@@ -11,8 +9,9 @@ $tablet = 768px
 $mobile = 400px
 
 // Colors
-$primary ?= #fff
-$secondary ?= #000
+$primary ?= #fffff
+$blue ?= #213142
+$yellow ?= #efd16f
 
 // Metrics
 $padding = 10px
@@ -20,7 +19,10 @@ $padding = 10px
 // CSS Reset
 global-reset()
 
-webfont('Franklin Gothic', 'franklingothic', true, 'bold')
+webfont('BR', 'BR', true, 'normal')
+webfont('BM', 'BM', true, 'normal')
+webfont('BB', 'BB', true, 'normal')
+webfont('DDNS', 'DDNS', true, 'normal')
 
 body,html
 	width 100%
@@ -28,10 +30,13 @@ body,html
 	background-color $primary
 	-webkit-text-size-adjust 100%
 
+html
+	font-size 62.5%
+
 body
 	text-rendering optimizeLegibility
 	font-smoothing()
-	font-size 62.5%
+	font-family 'BR', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif
 
 p
 	margin-bottom 1em
@@ -43,7 +48,8 @@ p
 	background $secondary
 
 *
-	hideselect()
+	//hideselect()
+	box-sizing()
 
 a, a:hover, a:visited, a:focus
 	color inherit
