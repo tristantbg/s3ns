@@ -1,3 +1,39 @@
+</div> <!-- wrapper -->
+
+<div id="lightbox">
+	<span class="inner"></span>
+</div>
+
+<footer class="row narrow phs">
+		<div class="column">
+			<h3>Contact</h3>
+			<?= $site->contact()->kt() ?>
+		</div>
+
+		<div class="column">
+			<h3>Address</h3>
+			<?= $site->address()->kt() ?>
+		</div>
+
+		<div class="column">
+			<div class="socials">
+				<?= $site->socials()->kt() ?>
+			</div>
+			<nav class="languages">
+				<ul>
+					<?php foreach($site->languages() as $language): ?>
+						<li<?php e($site->language() == $language, ' class="active"') ?>>
+							<a href="<?php echo $site->url($language->code()) ?>">
+								<?php echo html($language->name()) ?>
+							</a>
+						</li>
+					<?php endforeach ?>
+				</ul>
+			</nav>
+		</div>
+</footer>
+
+
 <?php if(!$site->googleanalytics()->empty()): ?>
   <!-- Google Analytics-->
   <script>

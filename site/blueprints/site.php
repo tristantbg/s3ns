@@ -29,3 +29,15 @@ fields:
     type: image
     help: 1200x630px minimum
     width: 1/2
+  footer:
+    label: Footer
+    type: headline
+  contact:
+    label: Contact
+    type: textarea
+  address:
+    label: Address
+    type: textarea
+  socials:
+    label: Socials
+    type: textarea

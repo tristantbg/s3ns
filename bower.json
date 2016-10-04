@@ -6,6 +6,8 @@
     "jquery": "~2.1.1",
     "underscore": "^1.8.3",
     "history.js": "^1.8.0",
-    "Morphext": "^2.4.4"
+    "Morphext": "^2.4.4",
+    "jquery-animateNumber": "^0.0.13",
+    "slick-carousel": "^1.6.0"
   }
 }

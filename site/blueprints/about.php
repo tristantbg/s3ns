@@ -2,13 +2,12 @@
 
 title: About
 files: false
-pages:
-  template:
-    - page
-    - feed
-    - news
+pages: false
 deletable: false
 fields:
   title:
     label: Title
     type:  text
+  text:
+    label: Text
+    type:  textarea

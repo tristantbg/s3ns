@@ -1,0 +1,171 @@
+// CSS Reset
+global-reset()
+
+webfont('BR', 'BR', true, 'normal')
+webfont('BM', 'BM', true, 'normal')
+webfont('BB', 'BB', true, 'normal')
+webfont('DDNS', 'DDNS', true, 'normal')
+
+body,html
+	width 100%
+	height 100%
+	background-color $primary
+	-webkit-text-size-adjust 100%
+
+html
+	font-size 62.5%
+
+body
+	//background $back
+	text-rendering optimizeLegibility
+	font-smoothing()
+	font-family 'BR', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif
+	font-size 1.9em
+	line-height 1.4em
+	color $blue
+
+section
+	span(1)
+
+.row
+	span(1)
+	padding-left $padding
+	padding-right $padding
+	
+.row.narrow
+	padding-left ($padding*2)
+	padding-right ($padding*2)
+
+.hero
+	span(1)
+	min-height 40rem
+	overflow hidden
+	background-size cover
+	background-position center
+	.overlay
+		width 100%
+		height 100%
+		position absolute
+		top 0
+		left 0
+		z-index 100
+		box-shadow(0 0 15rem 2rem rgba(0,0,0,.8) inset)
+		transition(box-shadow,600ms)
+		.left
+			transition(transform, 600ms)
+			transform(translateX(0px))
+	.text
+		col(1/2)
+
+.hero:hover
+	.overlay
+		box-shadow(0 0 10rem 2rem rgba(0,0,0,.3) inset)
+		.left
+			transform(translateX(10px))
+			
+
+.hero.medium
+	min-height 50rem
+
+.hero.large
+	min-height 60rem
+
+.ph
+	padding-top ($padding*1.5)
+	padding-bottom ($padding*1.5)
+
+.phs
+	padding-top ($padding)
+	padding-bottom ($padding)
+
+.brandlogo + .row, .row + .row
+	padding-top 0
+
+.title
+	font-family 'BM'
+	font-size 1.4em
+	margin 1em 0
+
+.center
+	text-align center !important
+
+h2
+	text-transform uppercase
+	font-family 'BM'
+	margin 1rem 0
+h3
+	font-family 'BB'
+	margin 1rem 0
+
+h4
+	font-family 'BM'
+	font-size .8em
+	margin 1rem 0
+
+strong
+	font-family 'BB'
+
+figure
+	margin 0
+	img
+		width 100%
+
+.secondary
+	color $yellow
+
+.num
+	font-family 'DDNS'
+	color $yellow
+	font-size 6vw
+	margin-bottom 3rem
+
+.quote
+	blockquote
+		font-size 1.5em
+		font-family 'BB'
+	.citation
+		margin-top 1em
+
+p
+	margin-bottom 1em
+
+::selection
+	background lightgrey
+	
+::-moz-selection
+	background lightgrey
+
+*
+	//hideselect()
+	box-sizing()
+
+a, a:hover, a:visited, a:focus
+	color inherit
+	text-decoration none
+	cursor pointer
+	font-family 'BB'
+
+.columns
+	span(1)
+	
+.column
+	col(1)
+	
+.columns-1 .column
+	col(1)
+	
+.columns-2 .column
+	col(1/2, cycle:2)
+	
+.columns-3 .column
+	col(1/3, cycle:3)
+	
+.columns-4 .column
+	col(1/4, cycle:4)
+	
+.columns-5 .column
+	col(1/5, cycle:5)
+
+.column, .columns-1 .column, .columns-2 .column, .columns-3 .column, .columns-4 .column, .columns-5 .column
+	+below($tablet)
+		stack()

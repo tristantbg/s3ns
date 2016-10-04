@@ -2,19 +2,24 @@
 
 <?php snippet('menu') ?>
 
-<section class="row ph center">
+<section id="project-title" class="row ph center">
 	<div class="title">
 		<h1><?= $page->title()->html() ?></h1>
 	</div>
-	<?php if(!$page->text()->empty()): ?>
-		<div class="description row narrow">
-			<?= $page->text()->kt() ?>
-		</div>
-	<?php endif ?>
 </section>
+
+<section id="video-player">
+	<?= $page->link()->oembed([
+  	'autoplay' => true
+	]) ?>
+</section>
+
+<section id="more">
 
 <?php foreach($page->builder()->toStructure() as $section): ?>
   <?php snippet('sections/' . $section->_fieldset(), array('data' => $section)) ?>
 <?php endforeach ?>
+
+</section>
 
 <?php snippet('footer') ?>

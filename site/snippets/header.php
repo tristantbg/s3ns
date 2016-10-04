@@ -46,7 +46,7 @@
 	<meta itemprop="description" content="<?= $site->description()->html() ?>">
 	<link rel="shortcut icon" href="<?= url('assets/images/favicon.ico') ?>">
 	<link rel="icon" href="<?= url('assets/images/favicon.ico') ?>" type="image/x-icon">
-
+<!-- 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"> -->
 	<?php 
 	echo css('assets/css/build/build.min.css');
 	echo js('assets/js/vendor/modernizr.min.js');
@@ -64,4 +64,6 @@
 </head>
 <body>
 
-<div class="loader"></div>
+<div class="loader">
+	<div id="preload-logo"></div>
+</div>

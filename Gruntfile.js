@@ -2,7 +2,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         concat: {
             plugins: {
-                src: ['lib/underscore/underscore.min.js','assets/oembed/oembed.min.js','lib/history.js/scripts/bundled/html4+html5/jquery.history.js'],
+                src: ['lib/jquery-animateNumber/jquery.animateNumber.min.js', 'lib/slick-carousel/slick/slick.min.js', 'lib/Morphext/dist/morphext.js','assets/oembed/oembed.min.js','lib/history.js/scripts/bundled/html4+html5/jquery.history.js'],
                 dest: 'assets/js/plugins.concat.js'
             },
             js: {
@@ -31,18 +31,18 @@ module.exports = function(grunt) {
                     ],
                 },
                 files: {
-                    'assets/css/app.css': 'assets/css/app.styl'
+                    'assets/css/app.min.css': 'assets/css/app.styl'
                 }
             }
         },
         cssmin: {
           options: {
-            shorthandCompacting: false,
+            shorthandCompacting: true,
             roundingPrecision: -1
           },
           target: {
             files: {
-              'assets/css/build/build.min.css': ['assets/css/normalize.css', 'lib/animate.css/source/flippers/flipInX.css', 'lib/Morphext/dist/morphext.min.css', 'assets/css/app.css']
+              'assets/css/build/build.min.css': ['assets/css/normalize.css', 'assets/oembed/oembed.css', 'assets/css/sens-font.css', 'lib/slick-carousel/slick/slick.css','lib/slick-carousel/slick/slick-theme.css','lib/animate.css/source/_base.css', 'lib/animate.css/source/flippers/flipInX.css', 'lib/Morphext/dist/morphext.css', 'assets/css/app.min.css']
             }
           }
         },

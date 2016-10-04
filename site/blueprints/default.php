@@ -10,3 +10,50 @@ fields:
   text:
     label: Text
     type:  textarea
+  builder:
+    label: Sections
+    type: builder
+    fieldsets:
+      bodytext:
+        label: Body Text
+        snippet: sections/bodytext
+        fields:
+          full:
+            label: Fullwidth
+            type: toggle
+            default: no
+            text: yes/no
+          text:
+            label: Text
+            type: textarea
+      imagebanner:
+        label: Image Banner
+        snippet: sections/imagebanner
+        fields:
+          picture:
+            label: Background Image
+            type: image
+            width : 1/2
+          size:
+            label: size
+            type: select
+            width : 1/2
+            default : small
+            required: true
+            options:
+              small : Small
+              medium : Medium
+              large : Large
+          text:
+            label: Text
+            type: textarea
+      quote:
+        label: Quote
+        snippet: sections/quote
+        fields:
+          text:
+            label: Quote Text
+            type: textarea
+          citation:
+            label: Citation
+            type: text

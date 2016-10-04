@@ -29,7 +29,23 @@ of the system, please check out http://getkirby.com/docs/advanced/options
 
 */
 
-c::set('oembed.lazyvideo', true);
+c::set('home','projects');
+c::set('markdown.extra', true);
+c::set('languages', array(
+  array(
+    'code'    => 'fr',
+    'name'    => 'FR',
+    'locale'  => 'fr_FR',
+    'url'     => '/fr',
+  ),
+  array(
+    'code'    => 'en',
+    'name'    => 'EN',
+    'default' => true,
+    'locale'  => 'en_US',
+    'url'     => '/en',
+  )
+));
 c::set('sitemap.exclude', array('error'));
 c::set('sitemap.important', array('contact'));
 c::set('thumb.quality', 100);
@@ -42,6 +58,12 @@ c::set('routes', array(
 	// 		go($page);
 	// 	}
 	// 	),
+	array(
+        'pattern' => '(:all)/ajax',
+        'action'  => function($uri) {
+          tpl::load(kirby()->roots()->templates() . DS . 'ajax.php', array('uri' => $uri), false );
+        }
+    ),
 	array(
 		'pattern' => 'robots.txt',
 		'action' => function () {
