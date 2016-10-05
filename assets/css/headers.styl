@@ -100,14 +100,18 @@ footer
 	display inline-block
 	width 100%
 	.column
-		col(1/3, gutter: 10, cycle:3)
+		+above($mobile)
+			col(1/3, gutter: 10, cycle:3)
 		+below($mobile)
 			stack()
+			margin-bottom 1em
 		h3
 			margin-top 0
 			margin-bottom 2em
 	.socials
 		margin-bottom 4em
+		+below($mobile)
+			margin-bottom 2em
 		li
 			display inline-block
 			margin-right 1em
