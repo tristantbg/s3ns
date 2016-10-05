@@ -4,6 +4,7 @@ Thumbs.db
 /lib
 /assets/css/app.min.css
 /assets/js/build/*
+/assets/css/build/*
 /assets/js/app.concat.js
 /assets/js/plugins.concat.js
 /node_modules
