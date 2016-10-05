@@ -2,6 +2,7 @@
 
 <div id="lightbox">
 	<span class="inner"></span>
+	<span class="close"></span>
 </div>
 
 <footer class="row narrow phs">
@@ -47,6 +48,7 @@
 <?php endif ?>
 	<script>
 		var $sitetitle = '<?= $site->title()->html() ?>';
+		var $root = '<?= $site->url() ?>';
 	</script>
 	<?php
 	echo js(array('assets/js/build/plugins.js', 'assets/js/build/app.min.js'));

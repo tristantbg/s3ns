@@ -23,6 +23,8 @@ body
 	font-size 1.9em
 	line-height 1.4em
 	color $blue
+	+below($tablet)
+		font-size 1.6em
 
 section
 	span(1)
@@ -51,17 +53,17 @@ section
 		z-index 100
 		box-shadow(0 0 15rem 2rem rgba(0,0,0,.8) inset)
 		transition(box-shadow,600ms)
-		.left
-			transition(transform, 600ms)
-			transform(translateX(0px))
+	.left
+		transition(transform, 600ms)
+		transform(translateX(0px))
 	.text
 		col(1/2)
 
 .hero:hover
 	.overlay
 		box-shadow(0 0 10rem 2rem rgba(0,0,0,.3) inset)
-		.left
-			transform(translateX(10px))
+	.left
+		transform(translateX(10px))
 			
 
 .hero.medium
@@ -81,13 +83,17 @@ section
 .brandlogo + .row, .row + .row
 	padding-top 0
 
-.title
+.title, nav.mobile-menu li
 	font-family 'BM'
 	font-size 1.4em
 	margin 1em 0
 
 .center
 	text-align center !important
+
+.js-words
+	-webkit-perspective 0
+	-webkit-backface-visibility hidden
 
 h2
 	text-transform uppercase
@@ -109,6 +115,35 @@ figure
 	margin 0
 	img
 		width 100%
+
+.close
+	position: absolute;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	top: 30px;
+	right: 30px;
+	cursor pointer
+  
+.close:hover::before, .close:hover::after
+	opacity 0.7
+  
+.close::before, .close::after
+	content: '';
+	position: absolute;
+	height: 2px;
+	margin-top: -1px;
+	width: 100%;
+	top: 50%;
+	left: 0;
+	background: $primary
+  
+.close::before
+	transform(rotate(45deg))
+
+.close::after
+	transform(rotate(-45deg))
+
 
 .secondary
 	color $yellow
@@ -169,3 +204,6 @@ a, a:hover, a:visited, a:focus
 .column, .columns-1 .column, .columns-2 .column, .columns-3 .column, .columns-4 .column, .columns-5 .column
 	+below($tablet)
 		stack()
+
+#wrapper
+	z-index 0

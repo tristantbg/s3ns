@@ -1,10 +1,8 @@
 /* globals $:false */
 var width = $(window).width(),
     height = $(window).height(),
-    $window = $(window),
-    states,
-    prevUrl,
-    $root = '/';
+    isMobile = false,
+    $window = $(window);
 $(function() {
     $.fn.isOnScreen = function() {
         var win = $window;
@@ -21,10 +19,14 @@ $(function() {
     };
     var app = {
         init: function() {
-            $(window).resize(function(event) {});
+            $(window).resize(function(event) {
+                app.sizeSet();
+            });
             $(document).ready(function($) {
                 $body = $('body');
                 $ajaxContainer = $('#lightbox .inner');
+                $mobileMenu = $('nav.mobile-menu');
+                app.centerContainer();
                 History.Adapter.bind(window, 'statechange', function() {
                     var State = History.getState();
                     console.log(State);
@@ -32,9 +34,13 @@ $(function() {
                     if (content.type == 'project') {
                         $body.addClass('project');
                         app.loadContent(State.url, $ajaxContainer);
-                    } else if (content.type == 'index') {
+                    } else {
                         $body.removeClass('project lightbox');
-                        setTimeout($ajaxContainer.empty, 300);
+                        setTimeout(function() {
+                            var $frame = $('#video-player iframe');
+                            $frame.attr('src', '');
+                            $ajaxContainer.empty();
+                        }, 500);
                     }
                 });
                 //esc
@@ -52,21 +58,28 @@ $(function() {
                 $('body').on('click', '[data-target]', function(e) {
                     $el = $(this);
                     e.preventDefault();
-                    if ($el.data('target') == "project") {
-                        History.pushState({
-                            type: 'project'
-                        }, $sitetitle + " | " + $el.data('title'), $el.attr('href'));
-                    } else if ($el.data('target') == "index") {
-                        e.preventDefault();
-                        app.goIndex();
+                    if (!isMobile) {
+                        if ($el.data('target') == "project") {
+                            History.pushState({
+                                type: 'project'
+                            }, $sitetitle + " | " + $el.data('title'), $el.attr('href'));
+                        } else if ($el.data('target') == "index") {
+                            e.preventDefault();
+                            app.goIndex();
+                        }
+                    } else {
+                        window.location.href = $el.attr('href');
                     }
                 });
-                $(".project").hover(app.hoverVideo, app.hideVideo);
-                $("#js-words").Morphext({
-                    animation: "flipInX",
-                    separator: ",",
-                    speed: 1000
+                $('.menu-toggle').click(function(e) {
+                    e.preventDefault();
+                    $mobileMenu.addClass('is-visible');
                 });
+                $mobileMenu.find('.close').click(function(e) {
+                    e.preventDefault();
+                    $mobileMenu.removeClass('is-visible');
+                });
+                $(".project").hover(app.hoverVideo, app.hideVideo);
                 $('.quotes').slick({
                     dots: true,
                     arrows: false,
@@ -75,25 +88,31 @@ $(function() {
                     autoplay: true,
                     speed: 500
                 });
-                $("#lightbox").click(function() {
+                $("#lightbox, #lightbox .close").click(function(e) {
+                    e.preventDefault();
                     app.goIndex();
                 }).children().click(function(e) {
                     return false;
                 });
                 $window.load(function() {
                     $(".loader").fadeOut("fast");
-                });
-                if ($('#numbers .num').size() > 0) {
-                    $window.scroll(function(event) {
-                        $('#numbers .num:not(".triggered")').each(function(index, el) {
-                            if ($(this).isOnScreen()) {
-                                $(this).addClass('triggered').prop('number', ($(this).data('number') - 20).toString()).animateNumber({
-                                    number: $(this).data('number')
-                                }, 1500);
-                            }
+                    if ($('#numbers .num').size() > 0) {
+                        $window.scroll(function(event) {
+                            $('#numbers .num:not(".triggered")').each(function(index, el) {
+                                if ($(this).isOnScreen()) {
+                                    $(this).addClass('triggered').prop('number', ($(this).data('number') - 20).toString()).animateNumber({
+                                        number: $(this).data('number')
+                                    }, 1500);
+                                }
+                            });
                         });
+                    }
+                    $("#js-words").Morphext({
+                        animation: "flipInX",
+                        separator: ",",
+                        speed: 1000
                     });
-                }
+                });
             });
         },
         sizeSet: function() {
@@ -115,15 +134,17 @@ $(function() {
             video.currentTime = 0;
         },
         goIndex: function() {
-            states = History.savedStates;
-            prevUrl = states[states.length - 2].hash;
             History.pushState({
                 type: 'index'
-            }, $sitetitle, prevUrl);
+            }, $sitetitle, $root);
         },
         loadContent: function(url, target) {
+            console.log('load');
             target.load(url + ' #wrapper', function(response) {
-                $body.addClass('lightbox');
+                $("body iframe").on("load", function() {
+                    app.centerContainer();
+                    $body.addClass('lightbox');
+                });
             });
         },
         ajaxLoadContent: function(url, target) {
@@ -133,6 +154,10 @@ $(function() {
                     $(target).html(data);
                 }
             });
+        },
+        centerContainer: function() {
+            var offset = (height - $ajaxContainer.height()) / 2;
+            $ajaxContainer.parent().css('padding-top', offset);
         },
         deferImages: function() {
             var imgDefer = document.getElementsByTagName('img');

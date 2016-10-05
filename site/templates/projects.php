@@ -21,14 +21,15 @@ $featured = $pages->find('projects/'.$page->featured()->value());
 <?php else: ?>
 	style="background-image: url(<?= thumb($featured->image($featured->thumbimg()), array('width'=> 2100))->url() ?>)"
 <?php endif ?>
- href="<?= $featured->url() ?>" data-title="<?= $featured->title()->html() ?>" data-target="project">
+ >
 	
 		<video id="video" video autobuffer autoplay loop muted>
 		<source id="mp4" src="<?= $featured->loopvideo()->toFile()->url() ?>" type="video/mp4">
 		</video>
 	
-		<span class="overlay">
-			<div class="left">
+		<span class="overlay" href="<?= $featured->url() ?>" data-title="<?= $featured->title()->html() ?>" data-target="project">		
+		</span>
+		<div class="left">
 			<a href="<?= $featured->url() ?>" data-title="<?= $featured->title()->html() ?>" data-target="project">
 				<span class="logo">
 					<img src="<?= $featured->image($featured->squarebrand())->url() ?>" width="100%" height="auto">
@@ -38,27 +39,26 @@ $featured = $pages->find('projects/'.$page->featured()->value());
 					<p><?= $featured->subtitle()->html() ?></p>
 				</span>
 			</a>
-			</div>
-			<div class="right">
-				<ul>
-					<li>
-						<a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo rawurlencode ($featured->link()); ?>&title=<?php echo rawurlencode ($featured->title()); ?>&summary=<?php echo rawurlencode ($featured->subtitle()); ?>&source=" target="blank" title="Share on Linkedin">
-							<i class="icon-linkedin-circled"></i>
-						</a>
-					</li>
-					<li>
-						<a href="https://pinterest.com/pin/create/button/?url=<?php echo rawurlencode ($featured->link()); ?>&media=&description=<?php echo rawurlencode ($featured->subtitle()); ?>" target="blank" title="Share on Pinterest">
-							<i class="icon-pinterest-circled"></i>
-						</a>
-					</li>
-					<li>
-						<a href="http://www.facebook.com/sharer.php?u=<?php echo rawurlencode ($featured->link()); ?>" target="blank" title="Share on Facebook">
-							<i class="icon-facebook-circled"></i>
-						</a>
-					</li>
-				</ul>	
-			</div>
-		</span>
+		</div>
+		<div class="right">
+			<ul>
+				<li>
+					<a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo rawurlencode ($featured->link()); ?>&title=<?php echo rawurlencode ($featured->title()); ?>&summary=<?php echo rawurlencode ($featured->subtitle()); ?>&source=" target="blank" title="Share on Linkedin">
+						<i class="icon-linkedin-circled"></i>
+					</a>
+				</li>
+				<li>
+					<a href="https://pinterest.com/pin/create/button/?url=<?php echo rawurlencode ($featured->link()); ?>&media=&description=<?php echo rawurlencode ($featured->subtitle()); ?>" target="blank" title="Share on Pinterest">
+						<i class="icon-pinterest-circled"></i>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.facebook.com/sharer.php?u=<?php echo rawurlencode ($featured->link()); ?>" target="blank" title="Share on Facebook">
+						<i class="icon-facebook-circled"></i>
+					</a>
+				</li>
+			</ul>	
+		</div>
 </section>
 
 <section class="row projects ph">
