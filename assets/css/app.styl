@@ -195,8 +195,23 @@ $padding = 5vw
 			width 90%
 			margin-left 5%
 			padding 0.3em
-		#project-title, #more
+		#project-title, #project-details
 			display none
+	.more
+		transition(opacity,250ms)
+		opacity 0
+		span(8/12, offset: 2/12)
+		font-size 2em
+		margin-top 15px
+		text-align center
+		color $yellow
+		cursor pointer
+	.more::after
+		content '+'
+		display inline-block
+	.more.open::after
+		content '-'
+		font-size 1.3em
 			
 body.project
 	overflow hidden
@@ -206,6 +221,6 @@ body.project
 
 body.project.lightbox
 	#lightbox 
-		.inner
+		.inner, .more
 			opacity 1
 			transform(translateY(0px))

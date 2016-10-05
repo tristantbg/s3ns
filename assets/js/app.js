@@ -40,6 +40,7 @@ $(function() {
                             var $frame = $('#video-player iframe');
                             $frame.attr('src', '');
                             $ajaxContainer.empty();
+                            $('#lightbox .more').removeClass('open');
                         }, 500);
                     }
                 });
@@ -93,6 +94,11 @@ $(function() {
                     app.goIndex();
                 }).children().click(function(e) {
                     return false;
+                });
+                $('#lightbox .more').click(function(e) {
+                  e.preventDefault();
+                  $('#project-details').slideToggle();
+                  $(this).toggleClass('open');
                 });
                 $window.load(function() {
                     $(".loader").fadeOut("fast");

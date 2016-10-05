@@ -3,6 +3,7 @@
 <div id="lightbox">
 	<span class="inner"></span>
 	<span class="close"></span>
+	<span class="more"></span>
 </div>
 
 <footer class="row narrow phs">
