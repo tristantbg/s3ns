@@ -1,7 +1,7 @@
 /* globals $:false */
 var width = $(window).width(),
     height = $(window).height(),
-    isMobile = false,
+    isMobile = null,
     $window = $(window);
 $(function() {
     $.fn.isOnScreen = function() {
