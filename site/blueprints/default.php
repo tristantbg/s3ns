@@ -35,7 +35,7 @@ fields:
             type: image
             width : 1/2
           size:
-            label: size
+            label: Size
             type: select
             width : 1/2
             default : small
@@ -56,4 +56,22 @@ fields:
             type: textarea
           citation:
             label: Citation
+            type: text
+      spacer:
+        label: Spacer
+        snippet: sections/spacer
+        fields:
+          size:
+            label: Size
+            type: select
+            default : small
+            required: true
+            options:
+              small : Small
+              large : Large
+      parallax:
+        label: Parallax Slide
+        fields:
+          head:
+            label: Parallax
             type: text

@@ -41,3 +41,33 @@ fields:
   socials:
     label: Socials
     type: textarea
+  parallax:
+    label: Parallax Slides
+    type: structure
+    style: table
+    fields:
+      maintitle:
+        label: Title
+        type: text
+        width: 1/2
+      visual:
+        label: Visual
+        type: image
+        width: 1/2
+      subtitle:
+        label: Subtitle
+        type: text
+        width: 1/2
+      anim:
+        label: Animation
+        type: select
+        default : left
+        required: true
+        options:
+          left : Left
+          right : Right
+          top : Top
+          bottom : Bottom
+      text:
+        label: Text
+        type: textarea

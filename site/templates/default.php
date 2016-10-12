@@ -2,7 +2,7 @@
 
 <?php snippet('menu') ?>
 
-<section class="row ph center">
+<section id="top-title" class="row ph center">
 	<div class="title">
 		<h1><?= $page->title()->html() ?></h1>
 	</div>

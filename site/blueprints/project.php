@@ -45,7 +45,7 @@ fields:
     width: 1/4
   rectbrand:
     label: Brand image (rect)
-    help: min 548x150 black PNG
+    help: ratio 200x50 PNG (min. width 200px)
     type: image
     required: true
     width: 1/4

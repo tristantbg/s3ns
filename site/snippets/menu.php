@@ -14,6 +14,7 @@ $contact = page('contact');
 		<li><a href="<?= $about->url() ?>"><?= $about->title()->html() ?></a></li>
 		<li class="logo">
 			<a href="<?= $site->url() ?>">
+				<img src="<?= url('assets/images/sens_logo.png') ?>" alt="Sens" data-logo="<?= url('assets/images/sens_logo.png') ?>">
 				<h1><?= $site->title()->html() ?></h1>
 			</a>
 		</li>

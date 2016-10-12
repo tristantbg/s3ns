@@ -13,14 +13,27 @@
 	#preload-logo
 		background url('../../images/sens_logo_animated.gif') no-repeat -9999px -9999px
 
+.opening
+	hideselect()
+	position fixed
+	width 100%
+	height 100%
+	top 0
+	left 0
+	background $primary url('../../images/sens_intro.gif') center 35% no-repeat
+	background-size 40%
+	z-index 9000
+	-webkit-perspective 0
+	-webkit-backface-visibility hidden
+	cursor pointer
+
 header
 	hideselect()
-	margin 3em 0 0
-	padding 0 ($padding*3)
+	padding 3em ($padding*3) 0
 	+below($laptop)
-		padding 0 $padding
+		padding 3em $padding 0
 	+below($tablet)
-		padding 0 $padding
+		padding 1em $padding
 	h1
 		opacity 0
 	ul
@@ -48,22 +61,16 @@ header
 			+below($tablet)
 				display block
 		li.logo
-			width 30%
 			height 100px
+			+above($tablet)
+				width 30%
 			+below($tablet)
 				height 50px
-			a
-				width 100%
+				text-align left
+			img
+				width auto
 				height 100%
-				display block
-				background-image url('../../images/sens_logo.png')
-				background-size contain
-				background-repeat no-repeat
-				background-position center
-				+below($tablet)
-					background-position left
-			a:hover
-				background-image url('../../images/sens_logo_animated.gif')
+				display inline-block
 
 nav.mobile-menu
 	display none
@@ -96,11 +103,21 @@ nav.mobile-menu
 nav.mobile-menu.is-visible
 	transform(translate3d(0%,0,10px))
 
+.intro.title
+	+below($tablet)
+		text-align center
+
+#top-title
+	margin-bottom ($padding*1.5)
+	+below($tablet)
+		padding-top 2rem
+
 footer
 	background $blue
 	color $primary
 	display inline-block
 	width 100%
+	padding-bottom $padding
 	.column
 		+above($mobile)
 			col(1/3, gutter: 10, cycle:3)
@@ -110,6 +127,8 @@ footer
 		h3
 			margin-top 0
 			margin-bottom 2em
+			+below($mobile)
+				margin-bottom 0
 	.socials
 		margin-bottom 4em
 		+below($mobile)
@@ -119,6 +138,9 @@ footer
 			margin-right 1em
 		i
 			font-size 25px
+			+below($mobile)
+				font-size 20px
+			
 	nav.languages
 		ul
 			li

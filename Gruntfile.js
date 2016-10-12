@@ -2,7 +2,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         concat: {
             plugins: {
-                src: ['lib/jquery-animateNumber/jquery.animateNumber.min.js', 'lib/slick-carousel/slick/slick.min.js', 'lib/Morphext/dist/morphext.js','assets/oembed/oembed.min.js','lib/history.js/scripts/bundled/html4+html5/jquery.history.js'],
+                src: ['lib/jquery.cookie/jquery.cookie.js', 'lib/jquery-animateNumber/jquery.animateNumber.min.js', 'lib/slick-carousel/slick/slick.min.js', 'lib/Morphext/dist/morphext.js','assets/oembed/oembed.min.js', 'lib/gsap/src/minified/TweenMax.min.js', 'lib/scrollmagic/scrollmagic/minified/ScrollMagic.min.js', 'lib/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js', 'lib/history.js/scripts/bundled/html4+html5/jquery.history.js'],
                 dest: 'assets/js/plugins.concat.js'
             },
             js: {
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
           },
           target: {
             files: {
-              'assets/css/build/build.min.css': ['assets/css/normalize.css', 'assets/oembed/oembed.css', 'assets/css/sens-font.css', 'lib/slick-carousel/slick/slick.css','lib/slick-carousel/slick/slick-theme.css','lib/animate.css/source/_base.css', 'lib/animate.css/source/flippers/flipInX.css', 'lib/Morphext/dist/morphext.css', 'assets/css/app.min.css']
+              'assets/css/build/build.min.css': ['lib/normalize-css/normalize.css', 'assets/oembed/oembed.css', 'assets/css/sens-font.css', 'lib/slick-carousel/slick/slick.css','lib/slick-carousel/slick/slick-theme.css','lib/animate.css/source/_base.css', 'lib/animate.css/source/flippers/flipInX.css', 'lib/Morphext/dist/morphext.css', 'assets/css/app.min.css']
             }
           }
         },
