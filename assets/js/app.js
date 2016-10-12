@@ -155,6 +155,9 @@ $(function() {
             height = $(window).height();
             isMobile = (width <= 770) ? true : false;
             if (!isMobile) {
+                if (width >= 770) {
+                    location.reload();
+                }
                 $logoPos = $logoImg.offset().left;
                 $introWords.css('padding-left', $logoPos * (1 + 0.025));
             } else {
