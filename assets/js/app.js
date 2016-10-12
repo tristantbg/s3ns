@@ -191,7 +191,7 @@ $(function() {
         },
         parallax: function() {
             var $elements = document.querySelectorAll('section.parallax-slide .content');
-            if ($elements.length > 0) {
+            if ($elements.length > 0 && !isMobile) {
                 var $columns = document.querySelectorAll('section.parallax-slide .content .column .inner');
                 var pos;
                 var controller = new ScrollMagic.Controller({
@@ -241,49 +241,15 @@ $(function() {
                     triggerElement: "#pin-container",
                     duration: $elements.length * 100 + "%"
                 }).setPin("#pin-container").setTween(wipeAnimation).addTo(controller);
-                // for (var i = 0; i < $elements.length; i++) {
-                //     new ScrollMagic.Scene({
-                //         triggerElement: $elements[i],
-                //         duration: "100%"
-                //     }).setPin($elements[i], {
-                //         pushFollowers: false
-                //     }).addTo(controller);
-                // }
-                // for (var i = 0; i < $elements.length; i++) {
-                //     if (i % 2 == 0) {
-                //         pos = 100;
-                //     } else {
-                //         pos = -100;
-                //     }
-                //     TweenMax.to($elements[i], 0, {
-                //         yPercent: pos,
-                //     });
-                //     new ScrollMagic.Scene({
-                //         triggerElement: $elements[i],
-                //         duration: "100%"
-                //     }).setTween($elements[i], {
-                //         yPercent: -pos,
-                //         //autoAlpha: 0
-                //     }).addTo(controller);
-                // }
-                // for (var i = 0; i < $columns.length; i++) {
-                //     if (i % 2 == 0) {
-                //         pos = 100;
-                //     } else {
-                //         pos = -100;
-                //     }
-                //     TweenMax.to($columns[i], 0, {
-                //         y: pos,
-                //     });
-                //     new ScrollMagic.Scene({
-                //         triggerHook: 0.5,
-                //         triggerElement: $columns[i],
-                //         duration: height
-                //     }).setTween($columns[i], {
-                //         y: 0,
-                //         //autoAlpha: 0
-                //     }).addTo(controller);
-                // }
+            } else {
+              $('#pin-container').slick({
+                    dots: false,
+                    arrows: false,
+                    fade: false,
+                    autoplay: true,
+                    speed: 500,
+                    autoplaySpeed: 2000
+                });
             }
         },
         loadContent: function(url, target) {
