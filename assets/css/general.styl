@@ -53,6 +53,8 @@ figure img
 	overflow hidden
 	background-size cover
 	background-position center
+	+below($tablet)
+		min-height 15rem
 	.overlay
 		width 100%
 		height 100%
@@ -64,6 +66,10 @@ figure img
 		transition(box-shadow,600ms)
 	.text
 		col(1/2)
+		+below($tablet)
+			stack()
+			height 100%
+			background rgba(255,255,255,0.5)
 
 .hero:hover
 	.overlay
@@ -72,9 +78,13 @@ figure img
 
 .hero.medium
 	min-height 50rem
+	+below($tablet)
+		min-height 25rem
 
 .hero.large
 	min-height 60rem
+	+below($tablet)
+		min-height 30rem
 
 .ph
 	padding-top ($padding*1.5)
