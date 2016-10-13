@@ -1,6 +1,6 @@
 <?php $size = $data->size()->int(); ?>
 
-<section class="row ph numbers-builder">
+<section class="numbers-builder">
 
 	<article class="center">
 		<div class="num"><?= $data->number1()->value() ?></div>
