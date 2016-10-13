@@ -20,12 +20,14 @@
 	height 100%
 	top 0
 	left 0
-	background $primary url('../../images/sens_intro.gif') center 35% no-repeat
-	background-size 70%
+	background $primary url('../../images/sens_intro.gif') center 40% no-repeat
+	background-size 20%
 	z-index 9000
 	-webkit-perspective 0
 	-webkit-backface-visibility hidden
 	cursor pointer
+	+below($tablet)
+		background-size 50%
 
 header
 	hideselect()

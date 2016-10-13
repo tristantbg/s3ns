@@ -169,6 +169,21 @@ $padding = 5vw
 		span(1/3)
 		img
 			opacity 0.3
+			+below($tablet)
+				width 10px
+
+.numbers-builder
+	flexbox()
+	justify-content center
+	align-items space-around
+	flex-direction row
+	.num
+		font-size 14vw
+		margin-bottom -.1em
+		+below($tablet)
+			font-size 6em
+	article
+		span(1/4)
 
 #team
 	span(1)

@@ -1,7 +1,7 @@
 /* globals $:false */
 var width = $(window).width(),
     height = $(window).height(),
-    isMobile = null,
+    isMobile = false,
     $window = $(window);
 $(function() {
     $.fn.isOnScreen = function() {
@@ -153,15 +153,15 @@ $(function() {
         sizeSet: function() {
             width = $(window).width();
             height = $(window).height();
-            isMobile = (width <= 770) ? true : false;
+            if (width <= 770) isMobile = true;
             if (!isMobile) {
-                if (width >= 770) {
-                    location.reload();
-                }
                 $logoPos = $logoImg.offset().left;
                 $introWords.css('padding-left', $logoPos * (1 + 0.025));
             } else {
                 $introWords.attr('style', '');
+                if (width >= 770) {
+                    location.reload();
+                }
             }
         },
         createCookie: function(name, value, minutes) {
@@ -245,7 +245,7 @@ $(function() {
                     duration: $elements.length * 100 + "%"
                 }).setPin("#pin-container").setTween(wipeAnimation).addTo(controller);
             } else {
-              $('#pin-container').slick({
+                $('#pin-container').slick({
                     dots: false,
                     arrows: false,
                     fade: false,

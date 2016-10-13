@@ -70,8 +70,53 @@ fields:
               small : Small
               large : Large
       parallax:
-        label: Parallax Slide
+        label: Parallax
         fields:
           head:
             label: Parallax
             type: text
+      numbers:
+        label: Numbers
+        snippet: sections/numbers
+        fields:
+          number1:
+            label: Number 1
+            type: number
+            width: 1/2
+            required: true
+          title1:
+            label: Title 1
+            type: text
+            width: 1/2
+            required: true
+          number2:
+            label: Number 2
+            type: number
+            width: 1/2
+          title2:
+            label: Title 2
+            type: text
+            width: 1/2
+          number3:
+            label: Number 3
+            type: number
+            width: 1/2
+          title3:
+            label: Title 3
+            type: text
+            width: 1/2
+          number4:
+            label: Number 4
+            type: number
+            width: 1/2
+          title4:
+            label: Title 4
+            type: text
+            width: 1/2
+          size:
+            label: Numbers displayed
+            type: number
+            default : 4
+            required: true
+            min : 1
+            max : 4
