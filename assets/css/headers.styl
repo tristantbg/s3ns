@@ -119,7 +119,9 @@ footer
 	color $primary
 	display inline-block
 	width 100%
-	padding-bottom $padding
+	padding-top 2em
+	padding-bottom 1em
+	font-size 0.9em
 	+below($tablet)
 		padding-left 2rem !important
 		padding-right 2rem !important
@@ -129,24 +131,27 @@ footer
 		+below($mobile)
 			stack()
 			margin-bottom 1em
+		p
+			margin-bottom 0
 		h3
 			margin-top 0
 			margin-bottom 2em
 			+below($mobile)
 				margin-bottom 0
 	.socials
-		margin-bottom 4em
+		margin-bottom 2em
 		+below($mobile)
 			margin-bottom 2em
 		li
 			display inline-block
 			margin-right 1em
 		i
-			font-size 25px
+			font-size 20px
 			+below($mobile)
 				font-size 20px
 			
 	nav.languages
+		margin-bottom 2em
 		ul
 			li
 				display inline-block

@@ -210,11 +210,26 @@ a, a:hover, a:visited, a:focus
 	cursor pointer
 	font-family 'BB'
 
+.parallax-title
+	padding-top ($padding)
+	padding-bottom ($padding)
+	+below($tablet)
+		padding-top 3.5rem
+		padding-bottom 3.5rem
+	h2
+		text-transform none
+		font-size 2vw
+		line-height 1.2em
+		font-family 'BM'
+		+below($tablet)
+			font-size 1.3em
+			
 #pin-container
-	margin-top 100vh
+	margin-top 160vh
 	width 100%
 	height 100vh
 	overflow hidden
+	background $grey
 	+below($tablet)
 		margin-top 0
 		height auto
@@ -225,6 +240,7 @@ a, a:hover, a:visited, a:focus
 	+above($tablet)
 		position absolute
 	.content
+		background $grey
 		+above($tablet)
 			box-shadow(0 0 10rem 2rem rgba(0,0,0,.5))
 			height 100%
@@ -259,7 +275,7 @@ a, a:hover, a:visited, a:focus
 		+below($tablet)
 			font-size 1.3em
 
-.parallax-slide:nth-of-type(even)
+.parallax-slide
 	.column:nth-child(1)
 		background $blue
 		color $primary
@@ -268,14 +284,14 @@ a, a:hover, a:visited, a:focus
 	.column:nth-child(2)
 		background $grey
 
-.parallax-slide:nth-of-type(odd)
-	.column:nth-child(2)
-		background $blue
-		color $primary
-		h2
-			font-family 'BB'
-	.column:nth-child(1)
-		background $grey
+// .parallax-slide:nth-of-type(odd)
+// 	.column:nth-child(2)
+// 		background $blue
+// 		color $primary
+// 		h2
+// 			font-family 'BB'
+// 	.column:nth-child(1)
+// 		background $grey
 
 .columns
 	span(1)

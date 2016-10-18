@@ -41,6 +41,9 @@ fields:
   socials:
     label: Socials
     type: textarea
+  parallaxtitle:
+    label: Parallax Title
+    type:  text
   parallax:
     label: Parallax Slides
     type: structure

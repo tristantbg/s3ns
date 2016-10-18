@@ -1,5 +1,11 @@
 <?php $slides = $site->parallax()->toStructure() ?>
 
+<?php if($site->parallaxtitle()->isNotEmpty()): ?>
+	<section class="row narrow center parallax-title">
+		<h2><?= $site->parallaxtitle() ?></h2>
+	</section>
+<?php endif ?>
+
 <section id="pin-container">
 	<?php foreach ($slides as $key => $slide): ?>
 		<section class="parallax-slide">

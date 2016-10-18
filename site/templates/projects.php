@@ -21,7 +21,7 @@ $featured = $pages->find('projects/'.$page->featured()->value());
 
 <section id="top-title" class="ph">
 	<div class="intro title">
-		We do <span id="js-words"><?= $page->tagline()->value() ?></span>.
+		We do <span id="js-words"><?= $page->tagline()->value() ?>,Videos</span>.
 	</div>
 </section>
 
@@ -90,7 +90,7 @@ $featured = $pages->find('projects/'.$page->featured()->value());
 			</span>
 			<span class="video-loop">
 			<?php if ($project->loopvideo()->isNotEmpty()): ?>
-				<video id="video" video autobuffer loop muted>
+				<video id="video" video loop muted>
 	  				<source id="mp4" src="<?= $project->loopvideo()->toFile()->url() ?>" type="video/mp4">
 				</video>
 			<?php endif ?>

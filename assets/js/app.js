@@ -32,7 +32,6 @@ $(function() {
                 $ajaxContainer = $('#lightbox .inner');
                 $mobileMenu = $('nav.mobile-menu');
                 $featured = $('.featured-project #video').get(0);
-                app.sizeSet();
                 History.Adapter.bind(window, 'statechange', function() {
                     var State = History.getState();
                     console.log(State);
@@ -71,7 +70,7 @@ $(function() {
                         if ($el.data('target') == "project") {
                             History.pushState({
                                 type: 'project'
-                            }, $sitetitle + " | " + $el.data('title'), $el.attr('href'));
+                            }, $el.data('title') + " | " + $sitetitle, $el.attr('href'));
                         } else if ($el.data('target') == "index") {
                             e.preventDefault();
                             app.goIndex();
@@ -127,6 +126,7 @@ $(function() {
                     $(this).toggleClass('open');
                 });
                 $window.load(function() {
+                    app.sizeSet();
                     $(".loader").fadeOut("fast");
                     if ($('#numbers .num').size() > 0) {
                         $window.scroll(function(event) {
@@ -156,7 +156,7 @@ $(function() {
             if (width <= 770) isMobile = true;
             if (!isMobile) {
                 $logoPos = $logoImg.offset().left;
-                $introWords.css('padding-left', $logoPos * (1 + 0.025));
+                $introWords.css('padding-left', $logoPos * (1 + 0.068));
             } else {
                 $introWords.attr('style', '');
                 if (width >= 770) {
@@ -193,57 +193,99 @@ $(function() {
             }, $sitetitle, $root);
         },
         parallax: function() {
-            var $elements = document.querySelectorAll('section.parallax-slide .content');
-            if ($elements.length > 0 && !isMobile) {
-                var $columns = document.querySelectorAll('section.parallax-slide .content .column .inner');
-                var pos;
-                var controller = new ScrollMagic.Controller({
-                    globalSceneOptions: {
-                        triggerHook: 'onLeave'
-                    }
+            if (!isMobile) {
+                var controller = new ScrollMagic.Controller();
+                var featured = TweenLite.fromTo('.featured-project #video', 1, {
+                    yPercent: 10,
+                }, {
+                    yPercent: 0,
                 });
-                var wipeAnimation = new TimelineMax();
-                for (var i = 1; i < $elements.length; i++) {
-                    var el = $elements[i];
-                    var anim = el.getAttribute('data-wipe');
-                    if (anim == 'right') {
-                        wipeAnimation.add(TweenLite.fromTo(el, 1, {
-                                x: "120%"
-                            }, {
-                                x: "0%",
-                                ease: Linear.easeNone
-                            }) // in from right
-                        );
-                    } else if (anim == 'left') {
-                        wipeAnimation.add(TweenLite.fromTo(el, 1, {
-                                x: "-120%"
-                            }, {
-                                x: "0%",
-                                ease: Linear.easeNone
-                            }) // in from left
-                        );
-                    } else if (anim == 'top') {
-                        wipeAnimation.add(TweenLite.fromTo(el, 1, {
-                                y: "-120%"
-                            }, {
-                                y: "0%",
-                                ease: Linear.easeNone
-                            }) // in from top
-                        );
-                    } else if (anim == 'bottom') {
-                        wipeAnimation.add(TweenLite.fromTo(el, 1, {
-                                y: "120%"
-                            }, {
-                                y: "0%",
-                                ease: Linear.easeNone
-                            }) // in from bottom
-                        );
-                    }
-                }
+                var projects = TweenMax.staggerFromTo(".project", 2, {
+                    y: '30%',
+                    opacity: 0
+                }, {
+                    y: '0%',
+                    opacity: 1
+                }, 0.3);
+                var founders = TweenMax.staggerFromTo("#founders article", 2, {
+                    y: '20%',
+                    opacity: 0
+                }, {
+                    y: '0%',
+                    opacity: 1
+                }, 0.3);
+                var team = TweenMax.staggerFromTo("#team article", 2, {
+                    y: '20%'
+                }, {
+                    y: '0%',
+                }, 0.5);
                 new ScrollMagic.Scene({
-                    triggerElement: "#pin-container",
-                    duration: $elements.length * 100 + "%"
-                }).setPin("#pin-container").setTween(wipeAnimation).addTo(controller);
+                    triggerElement: ".featured-project",
+                    triggerHook: 0.4,
+                    duration: '100%'
+                }).setTween(featured).addTo(controller);
+                new ScrollMagic.Scene({
+                    triggerElement: ".projects",
+                    triggerHook: 0.6,
+                    duration: '60%'
+                }).setTween(projects).addTo(controller);
+                new ScrollMagic.Scene({
+                    triggerElement: "#founders",
+                    triggerHook: 0.55,
+                    duration: '50%'
+                }).setTween(founders).addTo(controller);
+                new ScrollMagic.Scene({
+                    triggerElement: "#team",
+                    triggerHook: 0.6,
+                    duration: '100%'
+                }).setTween(team).addTo(controller);
+                var $elements = document.querySelectorAll('section.parallax-slide .content');
+                if ($elements.length > 0) {
+                    var pos;
+                    var wipeAnimation = new TimelineMax();
+                    for (var i = 1; i < $elements.length; i++) {
+                        var el = $elements[i];
+                        var anim = el.getAttribute('data-wipe');
+                        if (anim == 'right') {
+                            wipeAnimation.add(TweenLite.fromTo(el, 1, {
+                                    x: "120%"
+                                }, {
+                                    x: "0%",
+                                    ease: Linear.easeNone
+                                }) // in from right
+                            );
+                        } else if (anim == 'left') {
+                            wipeAnimation.add(TweenLite.fromTo(el, 1, {
+                                    x: "-120%"
+                                }, {
+                                    x: "0%",
+                                    ease: Linear.easeNone
+                                }) // in from left
+                            );
+                        } else if (anim == 'top') {
+                            wipeAnimation.add(TweenLite.fromTo(el, 1, {
+                                    y: "-120%"
+                                }, {
+                                    y: "0%",
+                                    ease: Linear.easeNone
+                                }) // in from top
+                            );
+                        } else if (anim == 'bottom') {
+                            wipeAnimation.add(TweenLite.fromTo(el, 1, {
+                                    y: "120%"
+                                }, {
+                                    y: "0%",
+                                    ease: Linear.easeNone
+                                }) // in from bottom
+                            );
+                        }
+                    }
+                    new ScrollMagic.Scene({
+                        triggerElement: "#pin-container",
+                        triggerHook: 'onLeave',
+                        duration: $elements.length * 100 + "%"
+                    }).setPin("#pin-container").setTween(wipeAnimation).addTo(controller);
+                }
             } else {
                 $('#pin-container').slick({
                     dots: false,
