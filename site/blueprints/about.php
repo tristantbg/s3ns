@@ -8,6 +8,11 @@ fields:
   title:
     label: Title
     type:  text
+    width: 1/2
+  customtitle:
+    label: Custom header title
+    type: text
+    width: 1/2
   text:
     label: Text
     type:  textarea

@@ -17,6 +17,14 @@ kirby()->routes(array(
 					$sitemap .= '</priority></url>';
 				}
 			}
+			foreach(site()->pages()->index()->visible() as $p){
+				if(!in_array($p->uri(), $exclude)){
+					$sitemap .= '<url><loc>' . html($p->url('fr'));
+					$sitemap .= '</loc><lastmod>' . $p->modified('c') . '</lastmod><priority>';
+					$sitemap .= ($p->isHomePage()||in_array($p->uri(), $important)) ? 1 : 0.6/$p->depth();
+					$sitemap .= '</priority></url>';
+				}
+			}
 			$sitemap .= '</urlset>';
 
 			return new Response($sitemap, 'xml');

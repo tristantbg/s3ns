@@ -155,8 +155,7 @@ $(function() {
             height = $(window).height();
             if (width <= 770) isMobile = true;
             if (!isMobile) {
-                $logoPos = $logoImg.offset().left;
-                $introWords.css('padding-left', $logoPos * (1 + 0.068));
+                $introWords.css('padding-left', (width - 150)/2 );
             } else {
                 $introWords.attr('style', '');
                 if (width >= 770) {
@@ -195,11 +194,11 @@ $(function() {
         parallax: function() {
             if (!isMobile) {
                 var controller = new ScrollMagic.Controller();
-                var featured = TweenLite.fromTo('.featured-project #video', 1, {
-                    yPercent: 10,
-                }, {
-                    yPercent: 0,
-                });
+                // var featured = TweenLite.fromTo('.featured-project #video', 1, {
+                //     yPercent: 10,
+                // }, {
+                //     yPercent: 0,
+                // });
                 var projects = TweenMax.staggerFromTo(".project", 2, {
                     y: '30%',
                     opacity: 0
@@ -219,11 +218,11 @@ $(function() {
                 }, {
                     y: '0%',
                 }, 0.5);
-                new ScrollMagic.Scene({
-                    triggerElement: ".featured-project",
-                    triggerHook: 0.4,
-                    duration: '100%'
-                }).setTween(featured).addTo(controller);
+                // new ScrollMagic.Scene({
+                //     triggerElement: ".featured-project",
+                //     triggerHook: 0.4,
+                //     duration: '100%'
+                // }).setTween(featured).addTo(controller);
                 new ScrollMagic.Scene({
                     triggerElement: ".projects",
                     triggerHook: 0.6,

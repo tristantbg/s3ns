@@ -13,7 +13,7 @@
 		</div>
 
 		<div class="column">
-			<h3>Address</h3>
+			<h3><?= l::get('address') ?></h3>
 			<?= $site->address()->kt() ?>
 		</div>
 

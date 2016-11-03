@@ -4,7 +4,11 @@
 
 <section id="top-title" class="row ph center">
 	<div class="title">
+	<?php if($page->customtitle()->isNotEmpty()): ?>
+		<h1><?= $page->customtitle()->html() ?></h1>
+	<?php else: ?>
 		<h1><?= $page->title()->html() ?></h1>
+	<?php endif ?>
 	</div>
 	<?php if(!$page->text()->empty()): ?>
 		<div class="description row narrow">
