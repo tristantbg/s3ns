@@ -38,17 +38,22 @@ fields:
           picture:
             label: Background Image
             type: image
-            width : 1/2
+            width : 1/3
           size:
             label: Size
             type: select
-            width : 1/2
+            width : 1/3
             default : small
             required: true
             options:
               small : Small
               medium : Medium
               large : Large
+          color:
+            label: Text color
+            type: text
+            help: HEX value
+            width : 1/3
           text:
             label: Text
             type: textarea
