@@ -61,7 +61,7 @@
 	<?php endif ?>
 
 </head>
-<body>
+<body data-id="<?= tagslug($page->uid()) ?>">
 
 <div class="loader">
 	<div id="preload-logo"></div>
