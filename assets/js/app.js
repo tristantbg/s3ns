@@ -155,7 +155,7 @@ $(function() {
             height = $(window).height();
             if (width <= 770) isMobile = true;
             if (!isMobile) {
-                $introWords.css('padding-left', (width - 150)/2 );
+                $introWords.css('padding-left', (width - 150) / 2);
             } else {
                 $introWords.attr('style', '');
                 if (width >= 770) {
@@ -177,6 +177,7 @@ $(function() {
                 speed: 1000
             });
             $opening.fadeOut('500');
+            app.deferVideos();
         },
         hoverVideo: function(e) {
             $('video', this).get(0).play();
@@ -317,13 +318,13 @@ $(function() {
             var offset = (height - $ajaxContainer.height()) / 2;
             $ajaxContainer.parent().css('padding-top', offset);
         },
-        deferImages: function() {
-            var imgDefer = document.getElementsByTagName('img');
-            for (var i = 0; i < imgDefer.length; i++) {
-                if (imgDefer[i].getAttribute('data-src')) {
-                    imgDefer[i].setAttribute('src', imgDefer[i].getAttribute('data-src'));
-                }
-            }
+        deferVideos: function() {
+            $("video.lazy source").each(function() {
+                var sourceFile = $(this).attr("data-src");
+                $(this).attr("src", sourceFile)
+                var video = this.parentElement;
+                video.load();
+            });
         }
     };
     app.init();

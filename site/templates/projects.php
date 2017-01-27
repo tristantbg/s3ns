@@ -89,9 +89,9 @@ $featured = $pages->find('projects/'.$page->featured()->value());
 				
 			</span>
 			<span class="video-loop">
-			<?php if ($project->loopvideo()->isNotEmpty()): ?>
-				<video id="video" video loop muted>
-	  				<source id="mp4" src="<?= $project->loopvideo()->toFile()->url() ?>" type="video/mp4">
+			<?php if ($project->loopvideosmall()->isNotEmpty()): ?>
+				<video class="lazy" id="video" video loop muted>
+	  				<source id="mp4" data-src="<?= $project->loopvideosmall()->toFile()->url() ?>" type="video/mp4">
 				</video>
 			<?php endif ?>
 				<img src="<?= thumb($project->image($project->featuredimg()), array('width' => 600))->url() ?>" alt="<?= $project->title()->html() ?>" width="100%" height="auto">

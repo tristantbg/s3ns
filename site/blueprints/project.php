@@ -50,7 +50,12 @@ fields:
     required: true
     width: 1/4
   loopvideo:
-    label: Video loop
+    label: Video loop (featured)
+    help: MP4 file
+    type: select
+    options: files
+  loopvideosmall:
+    label: Video loop (thumbnail)
     help: MP4 file
     type: select
     options: files
